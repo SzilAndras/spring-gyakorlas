@@ -2,10 +2,7 @@ package com.practice.practice.domain;
 
 import com.practice.practice.shared.Ancestor;
 import com.practice.practice.shared.CarType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -33,6 +30,10 @@ public class Car extends Ancestor {
     @Max(25000)
     private Long dailyCost;
 
-    @OneToOne(mappedBy = "car")
+    @org.hibernate.annotations.ColumnDefault("false")
+    private Boolean isRented = false;
+
+    @OneToOne(mappedBy = "car", optional = true)
     private Rent rent;
+
 }

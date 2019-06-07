@@ -27,6 +27,7 @@ public class Ancestor {
     @PrePersist
     void create(){
         this.createdTime = OffsetDateTime.now();
+        this.lastModification = OffsetDateTime.now();
     }
 
     @PreUpdate
