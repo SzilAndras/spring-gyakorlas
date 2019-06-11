@@ -49,4 +49,7 @@ public class CarController {
         return this.carService.getCarsByRented(false);
     }
 
+    @GetMapping("type/{type}")
+    public List<CarDto> getCarsByType
+
 }

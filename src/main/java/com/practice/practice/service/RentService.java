@@ -5,6 +5,7 @@ import com.practice.practice.domain.Rent;
 import com.practice.practice.dto.NewRentRequest;
 import com.practice.practice.dto.RentDto;
 import com.practice.practice.repository.RentRepository;
+import com.practice.practice.shared.CarMapperUtil;
 import com.practice.practice.shared.RentMapperUtil;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +30,7 @@ public class RentService {
     }
 
     public RentDto create(NewRentRequest newRent){
-        Car car = this.carService.getById(newRent.carId);
+        Car car = CarMapperUtil.carDtoToCar(this.carService.getById(newRent.carId));
         car.setIsRented(true);
         Rent rent = RentMapperUtil.rentRequestToRent(newRent);
         rent.setCar(car);

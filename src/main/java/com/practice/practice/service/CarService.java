@@ -43,10 +43,10 @@ public class CarService {
         this.carRepository.delete(CarMapperUtil.carDtoToCar(car));
     }
 
-    public Car getById(Long id){
+    public CarDto getById(Long id){
         Optional<Car> car = this.carRepository.findById(id);
         if (car.isPresent()){
-            return car.get();
+            return CarMapperUtil.carToCarDto(car.get());
         } else {
             return null;
         }
